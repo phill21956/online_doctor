@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:online_doctor/ui/consultationPage.dart';
 import 'package:online_doctor/widgets/button_widget.dart';
 
+import '../widgets/home_box_widget.dart';
+import '../widgets/search_widget.dart';
 
 class HomePage extends StatefulWidget {
   @override
@@ -36,22 +38,7 @@ class _HomePageState extends State<HomePage> {
               SizedBox(
                 height: 50,
               ),
-              Container(
-                margin: EdgeInsets.fromLTRB(20, 0, 20, 0),
-                decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(10),
-                  color: Colors.black12,
-                ),
-                child: TextField(
-                  decoration: InputDecoration(
-                    prefixIcon: Icon(Icons.search),
-                    hintText: 'Search',
-                    fillColor: Colors.grey,
-                    enabledBorder: InputBorder.none,
-                    focusedBorder: InputBorder.none,
-                  ),
-                ),
-              ),
+              SearchWidget(),
               SizedBox(
                 height: 30,
               ),
@@ -70,30 +57,7 @@ class _HomePageState extends State<HomePage> {
                     SizedBox(
                       width: 50,
                     ),
-                    // FlatButton(
-                    //     color: Colors.orange[100],
-                    //     shape: RoundedRectangleBorder(
-                    //         borderRadius: BorderRadius.circular(10)),
-                    //     onPressed: () {},
-                    //     child: Text(
-                    //       'Adult',
-                    //       style: TextStyle(
-                    //         color: Colors.orange,
-                    //       ),
-                    //     )),
-
-                    // FlatButton(
-                    //     color: Colors.grey[300],
-                    //     shape: RoundedRectangleBorder(
-                    //         borderRadius: BorderRadius.circular(10)),
-                    //     onPressed: () {},
-                    //     child: Text(
-                    //       'Children',
-                    //       style: TextStyle(
-                    //           color: Colors.grey, fontWeight: FontWeight.bold),
-                    //     )),
-                     
-                        ToggleButtons1(),
+                    ToggleButtons1(),
                   ],
                 ),
               ),
@@ -106,123 +70,53 @@ class _HomePageState extends State<HomePage> {
                   scrollDirection: Axis.horizontal,
                   child: Row(
                     children: [
-                      Container(
-                        height: 220,
-                        width: 150,
-                        decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(25),
-                          color: Colors.pinkAccent[100],
-                        ),
-                        child: Column(
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: <Widget>[
-                            Container(
-                              margin: EdgeInsets.fromLTRB(15, 20, 0, 0),
-                              child: Text(
-                                'Cough \n& Cold',
-                                style: TextStyle(
-                                  fontWeight: FontWeight.bold,
-                                  color: Colors.white,
-                                  fontSize: 17,
-                                ),
-                              ),
-                            ),
-                            Container(
-                              margin: EdgeInsets.fromLTRB(30, 0, 0, 0),
-                              child: InkWell(
-                                onTap: () {
-                                  Navigator.push(
-                                    context,
-                                    MaterialPageRoute(
-                                        builder: (context) =>
-                                            ConsultationPage()),
-                                  );
-                                },
-                                child: Image.asset('images/cough.png'),
-                              ),
-                            )
-                          ],
-                        ),
-                      ),
+                      HomeBoxWidget(
+                          boxImage: 'images/cough.png',
+                          boxColor: Colors.pinkAccent[100],
+                          boxText: 'Cough \n& Cold',
+                          homeNav: () {
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) => ConsultationPage()),
+                            );
+                          }),
                       SizedBox(
                         width: 10,
                       ),
-                      Container(
-                        height: 220,
-                        width: 150,
-                        decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(25),
-                          color: Colors.yellow[700],
-                        ),
-                        child: Column(
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: <Widget>[
-                            Container(
-                              margin: EdgeInsets.fromLTRB(15, 20, 0, 0),
-                              child: Text(
-                                'Diabetes \n Care',
-                                style: TextStyle(
-                                  fontWeight: FontWeight.bold,
-                                  color: Colors.white,
-                                  fontSize: 17,
-                                ),
-                              ),
-                            ),
-                            Container(
-                              margin: EdgeInsets.fromLTRB(30, 0, 0, 0),
-                              child: InkWell(
-                                onTap: () {},
-                                child: Image.asset('images/diabetic.png'),
-                              ),
-                            )
-                          ],
-                        ),
-                      ),
+                      HomeBoxWidget(
+                          boxImage: 'images/diabetic.png',
+                          boxColor: Colors.yellow[700],
+                          boxText: 'Diabetes \n Care',
+                          homeNav: () {
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) => ConsultationPage()),
+                            );
+                          }),
                       SizedBox(
                         width: 10,
                       ),
-                      Container(
-                        height: 220,
-                        width: 150,
-                        decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(25),
-                          color: Colors.red[400],
-                        ),
-                        child: Column(
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: <Widget>[
-                            Container(
-                              margin: EdgeInsets.fromLTRB(15, 20, 0, 0),
-                              child: Text(
-                                'Heart \n Heart',
-                                style: TextStyle(
-                                  fontWeight: FontWeight.bold,
-                                  color: Colors.white,
-                                  fontSize: 17,
-                                ),
-                              ),
-                            ),
-                            Container(
-                              margin: EdgeInsets.fromLTRB(30, 0, 0, 0),
-                              child: InkWell(
-                                onTap: () {},
-                                child: Image.asset('images/heart.png'),
-                              ),
-                            )
-                          ],
-                        ),
-                      ),
+                      HomeBoxWidget(
+                          boxImage: 'images/heart.png',
+                          boxColor: Colors.red[400],
+                          boxText: 'Heart \n Heart',
+                          homeNav: () {
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) => ConsultationPage()),
+                            );
+                          }),
                     ],
                   ),
                 ),
               ),
-             SizedBox(
+              SizedBox(
                 height: 30,
               ),
-             Container(
+              Container(
                 margin: EdgeInsets.fromLTRB(20, 0, 20, 0),
                 child: Text(
                   'Search by health concern',
@@ -232,7 +126,7 @@ class _HomePageState extends State<HomePage> {
                   ),
                 ),
               ),
-            Container(
+              Container(
                 margin: EdgeInsets.fromLTRB(20, 0, 20, 0),
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.center,
